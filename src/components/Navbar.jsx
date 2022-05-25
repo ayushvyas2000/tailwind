@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiMenu,HiX } from 'react-icons/hi'
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
+    const [scrolled, setScrolled] = useState(true)
     const list=['Home','About','Testimonials','Contact']
+    const handleScroll=()=>{
+        if (window.scrollY>=50) {
+            setScrolled(true)
+        }
+        else{
+            setScrolled(false)
+        }
+    }
+
+    useEffect(() => {
+      window.addEventListener('scroll',handleScroll)
+    
+      return () => {
+        window.removeEventListener('scroll',handleScroll)
+      }
+    } )
+    
+    
   return (<>
-    <header className='bg-emerald-500 shadow-lg text-white flex items-center p-5 justify-between lg:px-32 fixed top-0 left-0 right-0 z-50' >
+    <header className={`${scrolled && 'bg-emerald-500 shadow-lg text-white'} duration-1000 transition-all ease-in-out    ${!scrolled && 'text-gray-900'} flex items-center p-5 justify-between lg:px-32 fixed top-0 left-0 right-0 z-50`} >
         <a href='#Home' className='cursor-pointer text-xl font-bold'>The Dynamic Dev</a>
-        <nav className='flex sm:space-x-10 lg:space-x-20 sm:block hidden'>
+        <nav className=' sm:space-x-10 lg:space-x-20 sm:flex hidden'>
         {list.map((item,index)=>(
             <a className=' ease-in duration-500 opacity-70 hover:opacity-100' key={index} href={`#${item}`}>{item}</a>
         ))

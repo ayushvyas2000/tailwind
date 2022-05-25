@@ -62,7 +62,7 @@ const Testimonials = () => {
       }
 
       return(
-    <article className={` duration-500 ease-in absolute left-0 top-0 w-full h-full ${position} `}>
+    <article key={title} className={` duration-500 ease-in absolute left-0 top-0 w-full h-full ${position} `}>
     <img className=' w-full h-full object-cover' src={img} alt={title} />
     <div className='text-center left-0 right-0 absolute bottom-0 bg-opacity-70 text-white p-6 bg-black'>
     <h3 className='uppercase mb-5 text-3xl'>{title}</h3>
