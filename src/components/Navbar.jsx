@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { HiMenu,HiX } from 'react-icons/hi'
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
-    const [scrolled, setScrolled] = useState(true)
+    const [scrolled, setScrolled] = useState(false)
     const list=['Home','About','Testimonials','Contact']
     const handleScroll=()=>{
         if (window.scrollY>=50) {
